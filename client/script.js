@@ -1,0 +1,189 @@
+const salasPopulares = [
+  {
+    nome: "Auditorio",
+    descricao: "Sala com projetor e ar-condicionado.",
+    capacidade: 20,
+    valor: 100,
+    imagem: "assets/bem10.jpg",
+  },
+  {
+    nome: "Sala de reuniões",
+    descricao: "Sala média, perfeita para reuniões.",
+    capacidade: 10,
+    valor: 60,
+    imagem: "assets/bem10.jpg",
+  },
+  {
+    nome: "Sala de reuniões 2",
+    descricao: "Sala pequena, ideal para 4 pessoas.",
+    capacidade: 4,
+    valor: 40,
+    imagem: "assets/bem10.jpg",
+  },
+];
+
+const container = document.querySelector(".cards-container");
+
+if (container) {
+  salasPopulares.forEach((sala) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = `
+    <img src="${sala.imagem}" alt="${sala.nome}">
+    <hr>
+    <h3>${sala.nome}</h3>
+    <p><strong>Capacidade:</strong> ${sala.capacidade} pessoas</p>
+    <p><strong>Valor/h:</strong> R$ ${sala.valor}</p>
+    <p>${sala.descricao}</p>
+    <button>Fazer Reserva</button>
+  `;
+    container.appendChild(card);
+  });
+}
+
+/*
+PARTE 2
+*/
+
+// const salas = [
+//   {
+//     nome: "Auditorio",
+//     descricao: "Sala com projetor e ar-condicionado.",
+//     capacidade: 20,
+//     valor: 100,
+//     imagem: "assets/auditorio.jpg",
+//   },
+//   {
+//     nome: "Sala de reuniões",
+//     descricao: "Sala média, perfeita para reuniões.",
+//     capacidade: 10,
+//     valor: 60,
+//     imagem: "assets/espaco2.jpg",
+//   },
+//   {
+//     nome: "Sala de reuniões 2",
+//     descricao: "Sala pequena, ideal para 4 pessoas.",
+//     capacidade: 4,
+//     valor: 40,
+//     imagem: "assets/salao.jpg",
+//   },
+
+//   // novas salas
+//   {
+//     nome: "Sala Premium",
+//     descricao: "Sala ampla com TV 4K e sofá confortável.",
+//     capacidade: 8,
+//     valor: 120,
+//     imagem: "assets/premium.jpg",
+//   },
+//   {
+//     nome: "Coworking",
+//     descricao: "Espaço compartilhado com mesas individuais.",
+//     capacidade: 15,
+//     valor: 30,
+//     imagem: "assets/coworking.jpg",
+//   },
+//   {
+//     nome: "Sala de Treinamento",
+//     descricao: "Ideal para workshops e cursos.",
+//     capacidade: 25,
+//     valor: 150,
+//     imagem: "assets/treinamento.jpg",
+//   },
+//   {
+//     nome: "Sala Executiva",
+//     descricao: "Ambiente sofisticado para reuniões importantes.",
+//     capacidade: 6,
+//     valor: 200,
+//     imagem: "assets/executiva.jpg",
+//   },
+//   {
+//     nome: "Sala Criativa",
+//     descricao: "Espaço com quadro branco e materiais de brainstorming.",
+//     capacidade: 6,
+//     valor: 80,
+//     imagem: "assets/criativa.jpg",
+//   },
+//   {
+//     nome: "Sala Compacta",
+//     descricao: "Pequena e econômica para reuniões rápidas.",
+//     capacidade: 3,
+//     valor: 25,
+//     imagem: "assets/compacta.jpg",
+//   },
+//   {
+//     nome: "Sala Gamer",
+//     descricao: "Ambiente descontraído com TV e consoles.",
+//     capacidade: 5,
+//     valor: 90,
+//     imagem: "assets/gamer.jpg",
+//   },
+//   {
+//     nome: "Sala Open Space",
+//     descricao: "Espaço aberto para equipes maiores.",
+//     capacidade: 30,
+//     valor: 180,
+//     imagem: "assets/open.jpg",
+//   },
+//   {
+//     nome: "Sala de Entrevistas",
+//     descricao: "Ambiente reservado para entrevistas.",
+//     capacidade: 2,
+//     valor: 35,
+//     imagem: "assets/entrevista.jpg",
+//   },
+//   {
+//     nome: "Sala Multiuso",
+//     descricao: "Adaptável para diferentes tipos de uso.",
+//     capacidade: 12,
+//     valor: 70,
+//     imagem: "assets/multiuso.jpg",
+//   },
+//   {
+//     nome: "Sala Tech",
+//     descricao: "Equipada com computadores e internet rápida.",
+//     capacidade: 10,
+//     valor: 110,
+//     imagem: "assets/tech.jpg",
+//   },
+//   {
+//     nome: "Sala VIP",
+//     descricao: "Ambiente premium com serviços exclusivos.",
+//     capacidade: 4,
+//     valor: 250,
+//     imagem: "assets/vip.jpg",
+//   },
+//   {
+//     nome: "Sala de Estudo",
+//     descricao: "Silenciosa e ideal para concentração.",
+//     capacidade: 8,
+//     valor: 50,
+//     imagem: "assets/estudo.jpg",
+//   },
+//   {
+//     nome: "Sala Workshop",
+//     descricao: "Perfeita para atividades práticas em grupo.",
+//     capacidade: 20,
+//     valor: 130,
+//     imagem: "assets/workshop.jpg",
+//   },
+// ];
+
+// const container2 = document.querySelector(".card-container");
+
+// if (container2) {
+//   salas.forEach((sala) => {
+//     const cards = document.createElement("div");
+//     cards.classList.add("card");
+
+//     cards.innerHTML = `
+//     <h3>${sala.nome}</h3>
+//     <p><strong>Capacidade:</strong> ${sala.capacidade} pessoas</p>
+//     <p><strong>Valor/h:</strong> R$ ${sala.valor}</p>
+//     <p>${sala.descricao}</p>
+//     <button>Fazer Reserva</button>
+//   `;
+//     container2.appendChild(cards);
+//   });
+// }

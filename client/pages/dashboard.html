@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/client/constants/sideBar/menu.css" />
+    <link rel="stylesheet" href="/client/css/global.css" />
+
+  </head>
+  <body>
+    <header>
+      <a href="#" class="btn-abrir" onclick="AbrirMenu()">&#9776; Abrir</a>
+    </header>
+
+    <nav id="menu">
+      <a href="#" onclick="FecharMenu()">&times; Fechar</a>
+      <a href="/client/pages/agendarReserva.html">Fazer Reserva</a>
+      <a href="#">Minhas Reservas</a>
+      <a href="/client/pages/dashboard.html">Dashboard</a>
+      <a href="/client/index.html">Deslogar Conta</a>
+    </nav>
+
+    <main id="conteudo">
+      <h1>DashBoard</h1>
+    </main>
+  </body>
+  <script>
+    function AbrirMenu() {
+      document.getElementById("menu").style.width = "250px";
+      document.getElementById("conteudo").style.marginLeft = "250px";
+    }
+    function FecharMenu() {
+      document.getElementById("menu").style.width = "0px";
+      document.getElementById("conteudo").style.marginLeft = "0px";
+    }
+  </script>
+</html>
