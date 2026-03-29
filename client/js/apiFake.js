@@ -14,10 +14,12 @@ fetch("/client/data/dados.json")
      <p><strong>Capacidade:</strong> ${cards.capacidade} pessoas</p>
      <p><strong>Valor/h:</strong> R$ ${cards.valor}</p>
      <p>${cards.descricao}</p>
-     <button onClick="AddCardsToMyReservs(cards,i)">Fazer Reserva</button>
+     <button onClick="AddCardsToMyReservs(${cards,i})">Fazer Reserva</button>
   `;
       lista_cards.appendChild(card);
     });
   });
 
-function AddCardsToMyReservs(cards, i) {}
+function AddCardsToMyReservs(cards, index) {
+    alert("Sala selecionada:", index);
+}

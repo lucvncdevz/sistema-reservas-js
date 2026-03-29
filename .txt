@@ -1,3 +1,2 @@
-kj1MEyfwVpanGrOT
-
-mongodb+srv://lucasvnunes_db_user:VyGlbcCBzGgVwbmU@cluster0.iotpu4d.mongodb.net/?appName=Cluster0
+create database reservas character set utf8mb4 collate utf8mb4_unicode_ci;
+select * from reservas.users;

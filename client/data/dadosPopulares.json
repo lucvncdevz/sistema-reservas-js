@@ -1,0 +1,23 @@
+[
+  {
+    "nome": "Auditorio",
+    "descricao": "Sala com projetor e ar-condicionado.",
+    "capacidade": 20,
+    "valor": 100,
+    "imagem": "assets/bem10.jpg"
+  },
+  {
+    "nome": "Sala de reuniões",
+    "descricao": "Sala média, perfeita para reuniões.",
+    "capacidade": 10,
+    "valor": 60,
+    "imagem": "assets/bem10.jpg"
+  },
+  {
+    "nome": "Sala de reuniões 2",
+    "descricao": "Sala pequena, ideal para 4 pessoas.",
+    "capacidade": 4,
+    "valor": 40,
+    "imagem": "assets/bem10.jpg"
+  }
+]
