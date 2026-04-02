@@ -1,6 +1,6 @@
 const container = document.querySelector(".cards-container");
 
-fetch("/client/data/dadosPopulares.json")
+fetch("/data/dadosPopulares.json")
   .then((res) => res.json())
   .then((salasPopulares) => {
     salasPopulares.forEach((sala, i) => {

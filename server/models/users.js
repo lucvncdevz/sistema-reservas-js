@@ -17,9 +17,18 @@ const user = db.define("users", {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
+  },
+
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      len: [6, 100], 
+    },
   },
 });
 
-// user.sync({force: true});
+//user.sync({force: true});
 
 module.exports = user;

@@ -4,20 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="/client/css/auth.css">
+    <link rel="stylesheet" href="/css/auth.css">
   </head>
 
   <body>
     <div class="container">
       <h1>Fazer Login</h1>
-      <form action="/client/pages/agendarReserva.html" >
-        <label for="nome">Nome</label> <br />
-        <input id="nome" placeholder="Digite seu nome" required/> <br />
+      <form id="form" >
+        <label for="gmail">Gmail</label> <br />
+        <input id="gmail" placeholder="Digite seu gmail" required/> <br />
         <label for="senha">Senha</label> <br />
         <input id="senha" placeholder="Digite sua senha" type="password" required/> <br />
         <input class="button" type="submit"/>
       </form>
-      <a class="link" href="/client/pages/singup.html">Não possui conta? <span style="color: #538999;">Cadastre-se</span> </a> <br>
+      <a class="link" href="/pages/singup.html">Não possui conta? <span style="color: #538999;">Cadastre-se</span> </a> <br>
     </div>
+    <script src="/js/auth/login.js"></script>
   </body>
 </html>
