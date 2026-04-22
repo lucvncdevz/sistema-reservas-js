@@ -10,6 +10,10 @@ a {
 header {
   background-color: rgb(21, 4, 98);
   padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;  
 }
 
 .btn-abrir {

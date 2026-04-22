@@ -1,6 +1,6 @@
 let lista_cards = document.querySelector(".card-container");
 
-fetch("/client/data/dados.json")
+fetch("/data/dados.json")
   .then((res) => res.json())
   .then((data) => {
     //console.log(data);
@@ -14,12 +14,12 @@ fetch("/client/data/dados.json")
      <p><strong>Capacidade:</strong> ${cards.capacidade} pessoas</p>
      <p><strong>Valor/h:</strong> R$ ${cards.valor}</p>
      <p>${cards.descricao}</p>
-     <button onClick="AddCardsToMyReservs(${cards,i})">Fazer Reserva</button>
+     <button onClick="AddCardsToMyReservs(${i})">Fazer Reserva</button>
   `;
       lista_cards.appendChild(card);
     });
   });
 
-function AddCardsToMyReservs(cards, index) {
-    alert("Sala selecionada:", index);
+function AddCardsToMyReservs(index) {
+    alert("Sala selecionada: " + (index + 1));
 }

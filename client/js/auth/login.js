@@ -1,6 +1,7 @@
 const form = document.getElementById("form")
 
 form.addEventListener("submit", async(e) => {
+    e.preventDefault()
 const data = {
     email: document.getElementById("gmail").value,
     password: document.getElementById("senha").value
@@ -18,9 +19,18 @@ const result = await response.json();
 
 if(result.erro === false){
     alert('Login realizado! Bem vindo')
-    window.location.href = "/pages/dashboard.html";
-}else{
-    alert('Ops, Algo deu errado a logar')
+    localStorage.setItem('token', result.token);
+    localStorage.setItem('usuarioLogado', JSON.stringify(result.user));
+    window.location.href = "/html/pages/dashboard.html";
+    return;
+} 
+else if(result.user === false){
+    alert('Usuario não encontrado')
 }
-
+else if(result.password === false){
+    alert('Senha incorreta.')
+}
+else{
+    alert('Algo deu errado.')
+}
 }) 

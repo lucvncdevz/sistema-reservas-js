@@ -20,6 +20,12 @@ const user = db.define("users", {
     unique: true,
   },
 
+  cpf: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  },
+
   password: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -5,6 +5,7 @@ form.addEventListener("submit", async (e) => {
   const data = {
     name: document.getElementById("name").value,
     email: document.getElementById("e-mail").value,
+    cpf: document.getElementById("cpf").value,
     password: document.getElementById("password").value,
   }; 
 
@@ -18,5 +19,13 @@ form.addEventListener("submit", async (e) => {
 
   const result = await response.json();
 
-  console.log(result.erro);
+  if(result.erro === true) {
+    alert("Erro ao cadastrar usuário: ");
+  } else {
+    alert("Usuário cadastrado com sucesso!");
+    localStorage.setItem('usuarioLogado', JSON.stringify(result.user));
+    window.location.href = "/html/pages/dashboard.html";
+  }
+
+  // console.log(result.erro);
 });
