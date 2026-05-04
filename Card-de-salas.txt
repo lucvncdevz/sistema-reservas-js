@@ -1,0 +1,53 @@
+create database reservas character set utf8mb4 collate utf8mb4_unicode_ci;
+select * from reservas.users;
+
+CREATE DATABASE IF NOT EXISTS reservas;
+USE reservas;
+
+USE reservas;
+
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  cpf VARCHAR(14) NOT NULL UNIQUE,
+  phone VARCHAR(20),
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin', 'user') DEFAULT 'user',
+  active BOOLEAN DEFAULT TRUE,
+  createdAt DATETIME NOT NULL,
+  updatedAt DATETIME NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS salas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    capacidade INT NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    imagem VARCHAR(255),
+    disponivel BOOLEAN DEFAULT TRUE,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+INSERT INTO salas (nome, descricao, capacidade, valor, imagem) VALUES
+('Auditorio', 'Sala com projetor e ar-condicionado.', 20, 100.00, 'assets/auditorio.jpg'),
+('Sala de reuniões', 'Sala média, perfeita para reuniões.', 10, 60.00, 'assets/espaco2.jpg'),
+('Sala de reuniões 2', 'Sala pequena, ideal para 4 pessoas.', 4, 40.00, 'assets/salao.jpg'),
+('Sala Premium', 'Sala ampla com TV 4K e sofá confortável.', 8, 120.00, 'assets/premium.jpg'),
+('Coworking', 'Espaço compartilhado com mesas individuais.', 15, 30.00, 'assets/coworking.jpg'),
+('Sala de Treinamento', 'Ideal para workshops e cursos.', 25, 150.00, 'assets/treinamento.jpg'),
+('Sala Executiva', 'Ambiente sofisticado para reuniões importantes.', 6, 200.00, 'assets/executiva.jpg'),
+('Sala Criativa', 'Espaço com quadro branco e materiais de brainstorming.', 6, 80.00, 'assets/criativa.jpg'),
+('Sala Compacta', 'Pequena e econômica para reuniões rápidas.', 3, 25.00, 'assets/compacta.jpg'),
+('Sala Gamer', 'Ambiente descontraído com TV e consoles.', 5, 90.00, 'assets/gamer.jpg'),
+('Sala Open Space', 'Espaço aberto para equipes maiores.', 30, 180.00, 'assets/open.jpg'),
+('Sala de Entrevistas', 'Ambiente reservado para entrevistas.', 2, 35.00, 'assets/entrevista.jpg'),
+('Sala Multiuso', 'Adaptável para diferentes tipos de uso.', 12, 70.00, 'assets/multiuso.jpg'),
+('Sala Tech', 'Equipada com computadores e internet rápida.', 10, 110.00, 'assets/tech.jpg'),
+('Sala VIP', 'Ambiente premium com serviços exclusivos.', 4, 250.00, 'assets/vip.jpg'),
+('Sala de Estudo', 'Silenciosa e ideal para concentração.', 8, 50.00, 'assets/estudo.jpg'),
+('Sala Workshop', 'Perfeita para atividades práticas em grupo.', 20, 130.00, 'assets/workshop.jpg');

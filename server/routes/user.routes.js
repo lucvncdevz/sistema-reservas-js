@@ -3,7 +3,6 @@ const router = express.Router();
 const validarToken = require('../middlewares/auth'); // Puxa o segurança aqui
 
 router.post("/login", (req, res) => {
-    // lógica de login...
 });
 
 

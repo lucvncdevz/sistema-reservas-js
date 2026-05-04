@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const door = 33300;
 const user = require("./models/users");
+const Room = require("./models/room")
 const path = require("path");
 const bcrypt = require("bcryptjs");
 const jstoken = require("jsonwebtoken");
@@ -16,7 +17,7 @@ app.use(
     directives: {
       "default-src": ["'self'"],
       "script-src": ["'self'", "'unsafe-inline'"], // Permite a tag <script>
-      "script-src-attr": ["'unsafe-inline'"],      // Permite o onclick=""
+      "script-src-attr": ["'unsafe-inline'"], // Permite o onclick=""
       "connect-src": ["'self'", "http://localhost:33300"],
     },
   })
@@ -53,7 +54,7 @@ app.post("/singup", async (req, res) => {
         cpf: newUser.cpf,
       },
       "UserIsLoggedIn",
-      { expiresIn: "1h" },
+      { expiresIn: "1h" }
     );
 
     return res.json({
@@ -110,7 +111,7 @@ app.post("/login", async (req, res) => {
     const token = jstoken.sign(
       { id: usuario.id, email: usuario.email },
       "UserIsLoggedIn",
-      { expiresIn: "1h" },
+      { expiresIn: "1h" }
     );
 
     return res.json({
@@ -145,21 +146,28 @@ app.put("/update-data-user", validarToken, async (req, res) => {
     });
   }
 
-  const updatedUser = await user.update(
-    { name, email, cpf },
-    { where: { id } },
-  );
+  try {
+    await user.update({ name, email, cpf }, { where: { id } });
 
-  return res.json({
-    erro: false,
-    mensagem: "Dados atualizados com sucesso!",
-    user: {
-      id: updatedUser.id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      cpf: updatedUser.cpf,
-    },
-  });
+    const usuarioAtualizado = await user.findOne({ where: { id } });
+
+    return res.json({
+      erro: false,
+      mensagem: "Dados atualizados com sucesso!",
+      user: {
+        id: usuarioAtualizado.id,
+        nome: usuarioAtualizado.name,
+        email: usuarioAtualizado.email,
+        cpf: usuarioAtualizado.cpf,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      erro: true,
+      mensagem: "Erro interno ao atualizar os dados.",
+    });
+  }
 });
 
 // ==========================================
@@ -175,6 +183,20 @@ app.get("/validar-acesso", validarToken, async (req, res) => {
 });
 
 // ==========================================
+
+app.get("/api/salas", async (req, res) => {
+  try {
+    const salas = await Room.findAll(); // Busca tudo da tabela 'salas'
+    res.json(salas); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Erro ao buscar salas no banco" });
+  }
+});
+
+// ==========================================
+
+
 
 app.listen(door, () => {
   console.log(`Servidor rodando em http://localhost:${door}`);
