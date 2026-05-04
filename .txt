@@ -1,0 +1,7 @@
+create database reservas character set utf8mb4 collate utf8mb4_unicode_ci;
+select * from reservas.users;
+
+
+resolver esse bug: 
+Connecting to 'http://localhost:33300/.well-known/appspecific/com.chrome.devtools.json' violates the following Content Security Policy directive: "default-src 'none'". The request has been blocked. Note that 'connect-src' was not explicitly set, so 'default-src' is used as a fallback.
+

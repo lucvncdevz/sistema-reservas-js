@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Fazer Cadastro</h1>
+      <form id="formSingUp" method='POST'>
+        <label for="name">Nome</label> <br />
+        <input id="name" placeholder="Digite seu nome"  required/> <br />
+        <label for="e-mail">E-mail</label> <br />
+        <input id="e-mail" type="email" placeholder="Digite seu gmail" required/> <br />
+        <label for="password">Senha</label> <br />
+        <input id="password" placeholder="Digite sua senha" type="password" minlength="6" required/> <br />
+        <label for="cpf">CPF</label> <br />
+        <input id="cpf" placeholder="Digite seu cpf" required/> <br />
+        <input class="button" type="submit" value="Cadastrar"/>
+      </form>
+      <a class="link" href="login.html">Possui conta? <span style="color: #538999 ;">Clique aqui </span> </a> <br />
+    </div>
+    <script src="/js/auth/singup.js"></script>
+  </body>
+</html>

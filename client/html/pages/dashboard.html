@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/constants/sideBar/menu.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="btn-abrir" onclick="AbrirMenu()">&#9776; Abrir</a>
+    </header>
+
+    <nav id="menu">
+      <a href="#" onclick="FecharMenu()">&times; Fechar</a>
+      <a href="/html/pages/agendarReserva.html">Fazer Reserva</a>
+      <a href="#">Minhas Reservas</a>
+      <a href="/html/pages/dashboard.html">Dashboard</a>
+      <a href="#" onclick="logout()">Deslogar Conta</a>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+    <main id="conteudo">
+      <div class="container">
+        <div class="photo-perfil"></div>
+        <form method="POST">
+          <label>Nome</label><br />
+          <input id="display-nome" /><br />
+
+          <label>E-mail</label><br />
+          <input id="display-email" /><br />
+
+          <label>CPF</label><br />
+          <input id="display-cpf" /><br />
+
+          <button id="atualizar-dados-principais" type="submit">
+            Atualizar dados
+          </button>
+        </form>
+        <br />
+        <hr />
+
+
+
+
+
+
+
+
+        <h2>Alterar Senha</h2>
+        <form method="POST">
+          <label>Senha Atual</label>
+          <input
+            id="senhaAtual"
+            placeholder="Digite sua senha atual"
+            type="password"
+          />
+
+          <label>Senha Nova</label>
+          <input
+            id="senhaNova"
+            placeholder="Digite sua nova senha"
+            type="password"
+          />
+
+          <label>Confirmar Senha</label>
+          <input
+            id="Confirmar senha nova"
+            placeholder="Digite novamente sua senha nova"
+            type="password"
+          />
+
+          <button id="alterar-senha" type="submit">Alterar senha</button>
+        </form>
+      </div>
+    </main>
+  </body>
+  <script>
+    const usuarioArmazenado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+    checarAutenticacao();
+
+    async function checarAutenticacao() {
+    const token = localStorage.getItem("token");
+
+      if (!token || !usuarioArmazenado) {
+        window.location.href = "/html/index.html";
+        return;
+      }
+
+      try {
+        const response = await fetch("/validar-acesso", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        const result = await response.json();
+
+        if (result.erro) {
+          alert("Sessão expirada. Faça login novamente.");
+          localStorage.clear(); // Limpa tudo de uma vez
+          window.location.href = "/html/index.html";
+        } else {
+          document.getElementById("display-nome").value =
+            usuarioArmazenado.nome;
+          document.getElementById("display-email").value =
+            usuarioArmazenado.email;
+          document.getElementById("display-cpf").value = usuarioArmazenado.cpf;
+        }
+      } catch (error) {
+        console.error("Erro na validação:", error);
+        window.location.href = "/html/index.html";
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    const formAtualizarDados = document.getElementById(
+      "atualizar-dados-principais",
+    );
+    formAtualizarDados.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const dadosAtualizados = {
+        id: usuarioArmazenado.id,
+        name: document.getElementById("display-nome").value,
+        email: document.getElementById("display-email").value,
+        cpf: document.getElementById("display-cpf").value,
+      };
+
+      const response = await fetch("/update-data-user", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(dadosAtualizados),
+      });
+
+      const result = await response.json();
+      console.log("Resposta do servidor:", result);
+
+      if(!result.erro) {
+        alert("Dados atualizados!");
+        localStorage.setItem("usuarioLogado", JSON.stringify(result.user));
+    } else {
+        alert('Erro ao atualizar dados: ' + result.erro);
+    }
+    });
+
+
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = "/html/index.html";
+    }
+
+    function AbrirMenu() {
+      document.getElementById("menu").style.width = "250px";
+      document.getElementById("conteudo").style.marginLeft = "250px";
+    }
+    function FecharMenu() {
+      document.getElementById("menu").style.width = "0px";
+      document.getElementById("conteudo").style.marginLeft = "0px";
+    }
+  </script>
+</html>
